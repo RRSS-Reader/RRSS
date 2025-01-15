@@ -1,9 +1,20 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { FeedService } from './feed.service';
-import { CreateFeedDto } from './dto/create-feed.dto';
-import { UpdateFeedDto } from './dto/update-feed.dto';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  ParseIntPipe,
+} from "@nestjs/common";
+import { FeedService } from "./feed.service";
+import { CreateFeedDto } from "./dto/create-feed.dto";
+import { UpdateFeedDto } from "./dto/update-feed.dto";
+import { ApiTags } from "@nestjs/swagger";
 
-@Controller('feed')
+@Controller("feed")
+@ApiTags("Feeds")
 export class FeedController {
   constructor(private readonly feedService: FeedService) {}
 
@@ -17,18 +28,21 @@ export class FeedController {
     return this.feedService.findAll();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.feedService.findOne(+id);
+  @Get(":id")
+  findOne(@Param("id", ParseIntPipe) id: number) {
+    return this.feedService.findOne(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateFeedDto: UpdateFeedDto) {
+  @Patch(":id")
+  update(
+    @Param("id", ParseIntPipe) id: number,
+    @Body() updateFeedDto: UpdateFeedDto,
+  ) {
     return this.feedService.update(+id, updateFeedDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.feedService.remove(+id);
+  @Delete(":id")
+  remove(@Param("id", ParseIntPipe) id: number) {
+    return this.feedService.remove(id);
   }
 }

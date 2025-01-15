@@ -12,11 +12,17 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@nestjs/cli": "^10.4.9"
+    "@eslint/js": "^9.18.0",
+    "eslint": "^9.18.0",
+    "eslint-config-prettier": "^10.0.1",
+    "jiti": "^2.4.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.20.0"
   },
   "prettier": {
     "singleQuote": false,
     "endOfLine": "lf",
-    "tabWidth": 2
+    "tabWidth": 2,
+    "printWidth": 80
   }
 }

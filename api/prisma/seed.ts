@@ -1,8 +1,8 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from "@prisma/client";
 
 const fakeFeedsDataList = [
   {
-    title: ' ',
+    title: " ",
   },
 ];
 
@@ -17,6 +17,7 @@ for (let i = 1; i <= 10; i++) {
     create: {
       title: `Test Feed ${i}`,
       description: `Description for test feed ${i}`,
+      rssLink: "https://test.com",
     },
   });
 }

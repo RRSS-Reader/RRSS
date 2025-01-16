@@ -5,21 +5,25 @@
   "tasks": [
     {
       "type": "docker-compose",
-      "label": "Backend Docker Dev",
+      "label": "Backend:Docker:Dev",
       "dockerCompose": {
+        "files": ["api/docker-compose.yaml"],
         "up": {
           "detached": false,
           "build": false
-        },
-        "files": ["${workspaceFolder}/api/docker-compose.yaml"]
+        }
       },
       "isBackground": true,
-      // "problemMatcher": {
-      //   "background": {
-      //     "activeOnStart": true,
-      //     "endsPattern": "database system is ready to accept connections"
-      //   }
-      // },
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "."
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "this_info_should_never_appear",
+          "endsPattern": "(database system is ready to accept connections)|(Attaching to postgres-1)"
+        }
+      },
       "presentation": {
         "echo": true,
         "reveal": "silent",
@@ -27,6 +31,66 @@
         "panel": "shared",
         "showReuseMessage": true,
         "clear": false
+      }
+    },
+    {
+      "label": "Backend:Build:Dev",
+      "command": "pnpm",
+      "args": ["--filter=rrss-backend", "run", "build:watch"],
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "."
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Starting compilation",
+          "endsPattern": "Watching for file changes"
+        }
+      },
+      "hide": true
+    },
+    {
+      "label": "Backend:Serve:Dev",
+      "command": "pnpm",
+      "args": ["--filter=rrss-backend", "run", "serve:watch"],
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "."
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Starting Nest application",
+          "endsPattern": "Nest application successfully started"
+        }
+      },
+      "hide": true
+    },
+    {
+      "label": "Backend:Dev",
+      "dependsOn": [
+        "Backend:Docker:Dev",
+        "Backend:Build:Dev",
+        "Backend:Serve:Dev"
+      ],
+      "dependsOrder": "sequence"
+    },
+    {
+      "label": "Backend:Debug:Prepare",
+      "dependsOn": ["Backend:Docker:Dev", "Backend:Build:Dev"]
+    },
+    {
+      "label": "Prettier:Workspace",
+      "command": "pnpm",
+      "args": ["run", "prettier:format"],
+      "problemMatcher": [],
+      "presentation": {
+        "echo": true,
+        "panel": "shared",
+        "reveal": "always",
+        "clear": true,
+        "close": true
       }
     }
   ]

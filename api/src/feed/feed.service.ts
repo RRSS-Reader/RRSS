@@ -1,7 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { CreateFeedDto } from "./dto/create-feed.dto";
-import { UpdateFeedDto } from "./dto/update-feed.dto";
 import { PrismaService } from "nestjs-prisma";
+import { FeedCreateIn, FeedUpdateIn } from "./feed.dto";
 
 // Exceptions
 import { RRSSAPIException } from "@/exceptions/classes";
@@ -14,7 +13,7 @@ import {
 export class FeedService {
   constructor(private prisma: PrismaService) {}
 
-  async create(createFeedDto: CreateFeedDto) {
+  async create(createFeedDto: FeedCreateIn) {
     try {
       return await this.prisma.feed.create({
         data: {
@@ -28,8 +27,8 @@ export class FeedService {
       if (isPrismaUniqueFailedError(e)) {
         console.log(e);
         throw new RRSSAPIException("feed_duplicated", {
-          dupKey: e.meta.target,
-          dupValue: (createFeedDto as any)[e.meta.target] as string,
+          dupKey: e.meta.target[0],
+          dupValue: (createFeedDto as any)[e.meta.target[0]] as string,
         });
       }
       throw e;
@@ -53,7 +52,7 @@ export class FeedService {
     }
   }
 
-  update(id: number, updateFeedDto: UpdateFeedDto) {
+  update(id: number, updateFeedDto: FeedUpdateIn) {
     return this.prisma.feed.update({ where: { id }, data: updateFeedDto });
   }
 

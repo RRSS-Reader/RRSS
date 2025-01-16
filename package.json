@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prettier:list": "pnpm prettier . -l",
+    "prettier:format": "pnpm prettier . -l -w",
     "start:api": "pnpm --filter rrss-backend start",
     "start:api:dev": "pnpm --filter rrss-backend start:dev",
     "test": "echo \"Error: no test specified\" && exit 1"

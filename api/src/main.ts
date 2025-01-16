@@ -23,9 +23,16 @@ function setupSwagger(app: INestApplication) {
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // Global ValidationPipe
+  // Powered by class-validator, check out:
+  // https://docs.nestjs.com/pipes#class-validator
+  // for more info.
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+
+  // Global RRSS Exception Handler
   app.useGlobalFilters(new RRSSAPIExceptionFilter());
 
+  // Set up swagger interactive API docs.
   setupSwagger(app);
 
   await app.listen(apiConfig.port);

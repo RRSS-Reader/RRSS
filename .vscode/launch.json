@@ -6,10 +6,11 @@
   "configurations": [
     {
       "type": "node-terminal",
-      "name": "Node: Backend Dev",
+      "name": "Backend:Serve:Debug",
       "request": "launch",
-      "command": "pnpm run start:dev",
-      "cwd": "${workspaceFolder}\\api"
+      "command": "pnpm run serve:watch",
+      "cwd": "${workspaceFolder}/api",
+      "preLaunchTask": "Backend:Debug:Prepare"
     }
   ]
 }

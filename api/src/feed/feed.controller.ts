@@ -9,10 +9,8 @@ import {
   ParseIntPipe,
 } from "@nestjs/common";
 import { FeedService } from "./feed.service";
-import { CreateFeedDto } from "./dto/create-feed.dto";
-import { UpdateFeedDto } from "./dto/update-feed.dto";
+import { FeedOut, FeedCreateIn, FeedUpdateIn } from "./feed.dto";
 import { ApiOkResponse, ApiTags } from "@nestjs/swagger";
-import { FeedEntity } from "./dto/feed.entity";
 
 @Controller("feed")
 @ApiTags("Feeds")
@@ -20,8 +18,8 @@ export class FeedController {
   constructor(private readonly feedService: FeedService) {}
 
   @Post()
-  @ApiOkResponse({ type: FeedEntity })
-  create(@Body() createFeedDto: CreateFeedDto) {
+  @ApiOkResponse({ type: FeedOut })
+  create(@Body() createFeedDto: FeedCreateIn) {
     return this.feedService.create(createFeedDto);
   }
 
@@ -38,7 +36,7 @@ export class FeedController {
   @Patch(":id")
   update(
     @Param("id", ParseIntPipe) id: number,
-    @Body() updateFeedDto: UpdateFeedDto,
+    @Body() updateFeedDto: FeedUpdateIn,
   ) {
     return this.feedService.update(+id, updateFeedDto);
   }

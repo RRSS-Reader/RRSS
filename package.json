@@ -8,7 +8,8 @@
     "prettier:format": "pnpm prettier . -l -w",
     "start:api": "pnpm --filter rrss-backend start",
     "start:api:dev": "pnpm --filter rrss-backend start:dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,9 @@
     "@eslint/js": "^9.18.0",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
+    "husky": "^9.1.7",
     "jiti": "^2.4.2",
+    "prettier": "^3.4.2",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0"
   },
@@ -26,5 +29,9 @@
     "endOfLine": "lf",
     "tabWidth": 2,
     "printWidth": 80
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }

@@ -29,9 +29,5 @@
     "endOfLine": "lf",
     "tabWidth": 2,
     "printWidth": 80
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
   }
 }

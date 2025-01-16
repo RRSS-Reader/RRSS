@@ -3,8 +3,8 @@ import { ExceptionFilter, Catch, ArgumentsHost } from "@nestjs/common";
 import { Response } from "express";
 
 // Interfaces
-import { RRSSAPIException } from "./classes";
-import { ExceptionTitleLitrals } from "@shared/exceptions";
+import { RRSSAPIException } from "./classes.js";
+import { ExceptionTitleLitrals } from "@shared/exceptions.js";
 
 @Catch(RRSSAPIException)
 export class RRSSAPIExceptionFilter<T extends ExceptionTitleLitrals>

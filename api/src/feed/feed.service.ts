@@ -1,13 +1,13 @@
 import { Injectable } from "@nestjs/common";
 import { PrismaService } from "nestjs-prisma";
-import { FeedCreateIn, FeedUpdateIn } from "./feed.dto";
+import { FeedCreateIn, FeedUpdateIn } from "./feed.dto.js";
 
 // Exceptions
-import { RRSSAPIException } from "@/exceptions/classes";
+import { RRSSAPIException } from "@/exceptions/classes.js";
 import {
   isPrismaNotExistsError,
   isPrismaUniqueFailedError,
-} from "@/exceptions/utils";
+} from "@/exceptions/utils.js";
 
 @Injectable()
 export class FeedService {

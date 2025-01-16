@@ -1,13 +1,13 @@
 import { NestFactory } from "@nestjs/core";
-import { AppModule } from "./app.module";
+import { AppModule } from "./app.module.js";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { INestApplication, ValidationPipe } from "@nestjs/common";
 
 // Filters
-import { RRSSAPIExceptionFilter } from "./exceptions/http-error.filter";
+import { RRSSAPIExceptionFilter } from "./exceptions/http-error.filter.js";
 
 // Configs
-import * as apiConfig from "@shared/configs/api";
+import * as apiConfig from "@shared/configs/api.js";
 
 function setupSwagger(app: INestApplication) {
   const config = new DocumentBuilder()

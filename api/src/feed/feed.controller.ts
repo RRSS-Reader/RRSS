@@ -8,8 +8,8 @@ import {
   Delete,
   ParseIntPipe,
 } from "@nestjs/common";
-import { FeedService } from "./feed.service";
-import { FeedOut, FeedCreateIn, FeedUpdateIn } from "./feed.dto";
+import { FeedService } from "./feed.service.js";
+import { FeedOut, FeedCreateIn, FeedUpdateIn } from "./feed.dto.js";
 import { ApiOkResponse, ApiTags } from "@nestjs/swagger";
 
 @Controller("feed")

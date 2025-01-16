@@ -9,7 +9,6 @@ import {
   isPrismaNotExistsError,
   isPrismaUniqueFailedError,
 } from "@/exceptions/utils";
-import { title } from "process";
 
 @Injectable()
 export class FeedService {
@@ -29,8 +28,8 @@ export class FeedService {
       if (isPrismaUniqueFailedError(e)) {
         console.log(e);
         throw new RRSSAPIException("feed_duplicated", {
-          dupKey: "title",
-          dupValue: title,
+          dupKey: e.meta.target,
+          dupValue: (createFeedDto as any)[e.meta.target] as string,
         });
       }
       throw e;

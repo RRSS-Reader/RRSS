@@ -11,7 +11,7 @@
     "build": "nest build",
     "build:watch": "nest build --watch",
     "serve": "node \"./dist/api/src/main.js\"",
-    "serve:watch": "nodemon \"./dist/api/src/main.js\" --watch dist",
+    "serve:watch": "nodemon --enable-source-maps \"./dist/api/src/main.js\" --watch dist",
     "start": "pnpm run build && pnpm run serve",
     "start:dev": "concurrently \"pnpm run build:watch\" \"pnpm run serve:watch\"",
     "start:debug": "nest start --debug --watch",

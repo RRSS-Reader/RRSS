@@ -1,27 +1,24 @@
 // Basics
-import {
-  ExceptionFilter,
-  Catch,
-  ArgumentsHost,
-  HttpException,
-} from "@nestjs/common";
-import { Request, Response } from "express";
+import { ExceptionFilter, Catch, ArgumentsHost } from "@nestjs/common";
+import { Response } from "express";
 
 // Interfaces
 import { RRSSAPIException } from "./classes";
+import { ExceptionTitleLitrals } from "@shared/exceptions";
 
 @Catch(RRSSAPIException)
-export class RRSSAPIExceptionFilter implements ExceptionFilter {
-  catch(exception: HttpException, host: ArgumentsHost) {
+export class RRSSAPIExceptionFilter<T extends ExceptionTitleLitrals>
+  implements ExceptionFilter
+{
+  catch(exception: RRSSAPIException<T>, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
-    const request = ctx.getRequest<Request>();
     const status = exception.getStatus();
 
     response.status(status).json({
-      statusCode: status,
-      timestamp: new Date().toISOString(),
-      path: request.url,
+      success: false,
+      title: exception.title,
+      info: exception.info,
     });
   }
 }

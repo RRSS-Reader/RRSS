@@ -1,11 +1,5 @@
 import { PrismaClient } from "@prisma/client";
 
-const fakeFeedsDataList = [
-  {
-    title: " ",
-  },
-];
-
 const prisma = new PrismaClient();
 
 for (let i = 1; i <= 10; i++) {

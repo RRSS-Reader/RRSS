@@ -1,7 +1,8 @@
 import { IsOptional, IsString, IsUrl } from "class-validator";
 import { ApiProperty } from "@nestjs/swagger";
+import { Feed } from "@prisma/client";
 
-export class CreateFeedDto {
+export class CreateFeedDto implements Partial<Feed> {
   @IsString()
   @IsOptional()
   @ApiProperty({

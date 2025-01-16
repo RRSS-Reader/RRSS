@@ -9,7 +9,7 @@ services:
     volumes:
       - postgres:/var/lib/postgresql/data
     ports:
-      - '3001:5432'
+      - "3001:5432"
 
 volumes:
   postgres:

@@ -2,8 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "module": "NodeNext",
-    // "esModuleInterop": true,
-    "isolatedModules": true,
+    "esModuleInterop": true,
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
@@ -11,7 +10,8 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "rootDir": "../",
+    "baseUrl": "../",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": false,
@@ -20,9 +20,12 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@/*": ["./src/*"],
-      "@rrss/*": ["../*"],
-      "@shared/*": ["../shared/*"]
-    }
-  }
+      "#src/*": ["./src/*"],
+      "#rrss/*": ["../*"],
+      "#shared/*": ["../shared/*"]
+    },
+    "composite": true
+  },
+  "include": ["./src/**/*", "../shared/**/*"],
+  "exclude": ["./src/**/*.spec.ts"]
 }

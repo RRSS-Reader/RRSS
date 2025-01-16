@@ -85,5 +85,10 @@
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
+  },
+  "imports": {
+    "#shared/*.js": "./dist/shared/*.js",
+    "#src/*.js": "./dist/api/src/*.js",
+    "#rrss/*.js": "./dist/*.js"
   }
 }

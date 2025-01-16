@@ -7,7 +7,7 @@ import { INestApplication, ValidationPipe } from "@nestjs/common";
 import { RRSSAPIExceptionFilter } from "./exceptions/http-error.filter.js";
 
 // Configs
-import * as apiConfig from "@shared/configs/api.js";
+import * as apiConfig from "#shared/configs/api.js";
 
 function setupSwagger(app: INestApplication) {
   const config = new DocumentBuilder()

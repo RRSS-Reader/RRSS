@@ -2,7 +2,7 @@ import { HttpException, ArgumentsHost } from "@nestjs/common";
 import { Response } from "express";
 
 // Interfaces
-import { ExceptionInfo, ExceptionInfoBase } from "@shared/exceptions.js";
+import { ExceptionInfo, ExceptionInfoBase } from "#shared/exceptions.js";
 
 /**
  * Custom exception base class for RRSS backend

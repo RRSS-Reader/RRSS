@@ -4,7 +4,7 @@ import { Response } from "express";
 
 // Interfaces
 import { RRSSAPIException } from "./classes.js";
-import { ExceptionTitleLitrals } from "@shared/exceptions.js";
+import { ExceptionTitleLitrals } from "#shared/exceptions.js";
 
 @Catch(RRSSAPIException)
 export class RRSSAPIExceptionFilter<T extends ExceptionTitleLitrals>

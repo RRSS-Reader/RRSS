@@ -11,5 +11,4 @@ export class FeedEntity implements Feed {
 # Partial / Pick Update From Create
 
 ```ts
-
 ```

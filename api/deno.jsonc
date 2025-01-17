@@ -1,0 +1,21 @@
+{
+  "name": "@rrss/backend",
+  "exports": {
+    ".": "./src/main.ts"
+  },
+  "tasks": {
+    "dev": "deno run --watch --allow-read --allow-net --allow-env src/main.ts",
+    "start": "deno run --allow-read --allow-net --allow-env src/main.ts",
+    "check": "deno check ."
+  },
+  "imports": {
+    "@nestjs/core": "npm:@nestjs/core",
+    "@nestjs/common": "npm:@nestjs/common",
+    "@nestjs/platform-express": "npm:@nestjs/platform-express@^11.0.1",
+    "@nestjs/swagger": "npm:@nestjs/swagger@^11.0.0",
+    "express": "npm:express@^4.21.2",
+    "rxjs": "npm:rxjs",
+    "reflect-metadata": "npm:reflect-metadata",
+    "@src/": "./src/"
+  }
+}

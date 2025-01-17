@@ -1,13 +1,9 @@
 import { Module } from "@nestjs/common";
-import { AppService } from "./app.service.js";
-import { FeedModule } from "./feed/feed.module.js";
-import { PrismaModule } from "nestjs-prisma";
-
-// Controllers
-import { AppController } from "./app.controller.js";
+import { AppController } from "./app.controller.ts";
+import { AppService } from "./app.service.ts";
 
 @Module({
-  imports: [FeedModule, PrismaModule.forRoot({ isGlobal: true })],
+  imports: [],
   controllers: [AppController],
   providers: [AppService],
 })

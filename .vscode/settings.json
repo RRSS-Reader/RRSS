@@ -1,4 +1,17 @@
 {
-  "editor.tabSize": 2,
-  "editor.detectIndentation": true
+  "prettier.enable": false,
+  "editor.defaultFormatter": "denoland.vscode-deno",
+  "notebook.defaultFormatter": "denoland.vscode-deno",
+  "[typescript]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "denoland.vscode-deno"
+  }
 }
